@@ -42,52 +42,71 @@ const parseData = (data, numColumns) => {
 
 export class ResponsiveBoard extends React.Component {
   
-    async peasantButton(){
-        try{
-            await peasantSound1.loadAsync(require('../assets/sounds/PeasantWhat1.wav')) //.then().catch( error => console.log({error}))
-            await peasantSound1.playAsync()
-        }
-        catch(error){
-            console.log({error})
-            await peasantSound1.replayAsync()
-        }
+  
+  constructor(props){
+    super(props)
+    vm = this
+  }
+
+  async soundButton1(){
+      vm.playSound(matheusSound1)
+  }
+
+  async playSound(sound){
+    try{
+      await sound.replayAsync()
     }
+    catch(error){
+      await sound.playAsync()
+      console.log({error})
+    }
+  }
 
     
-    renderItem = ({ item, index }) => {
-        if (item.empty === true) {
-          return <View style={[styles.item, styles.itemInvisible]} />;
-        }
-        if(index %2==0){
-          return (
-            <TouchableHighlight style={styles.item} onPress={this.peasantButton} accessibilityLabel={item.key}>
-              <Text style={styles.itemText}>{item.key}</Text>
-            </TouchableHighlight>
-          )
-        } else {
-          return (
-            <View style={styles.item2}>
-              <Text style={styles.itemText}>{item.key}</Text>
-            </View>
-          )
-        }
-    }
-
-    render(){
-        return(
-            <View>
-                <FlatList
-                data={parseData(data, numColumns)}
-                numColumns={numColumns}
-                renderItem={this.renderItem}
-                style={styles.container}
-                />
-            </View>
+  renderItem = ({ item, index }) => {
+      if (item.empty === true) {
+        return <View style={[styles.item, styles.itemInvisible]} />;
+      }
+      if(index %2==0){
+        return (
+          <TouchableHighlight style={styles.item} onPress={this.soundButton1} accessibilityLabel={item.key}>
+            <Text style={styles.itemText}>{item.key}</Text>
+          </TouchableHighlight>
         )
-    }
+      } else {
+        return (
+          <View style={styles.item2}>
+            <Text style={styles.itemText}>{item.key}</Text>
+          </View>
+        )
+      }
+  }
+
+  render(){
+      return(
+          <View>
+              <FlatList
+              data={parseData(data, numColumns)}
+              numColumns={numColumns}
+              renderItem={this.renderItem}
+              style={styles.container}
+              />
+          </View>
+      )
+  }
 }
 
-let peasantSound1 = new Expo.Audio.Sound();
+let matheusSound1 = new Expo.Audio.Sound(); //.createAsync(require('../assets/sounds/PeasantWhat1.wav'));
+await matheusSound1.loadAsync(require('../assets/sounds/PeasantWhat1.wav'))
+
+let matheusSound2 = new Expo.Audio.Sound();
+let matheusSound3 = new Expo.Audio.Sound();
+let matheusSound4 = new Expo.Audio.Sound();
+let matheusSound5 = new Expo.Audio.Sound();
+let matheusSound6 = new Expo.Audio.Sound();
+let matheusSound7 = new Expo.Audio.Sound();
+let matheusSound8 = new Expo.Audio.Sound();
+let matheusSound9 = new Expo.Audio.Sound();
 
 const styles = StyleSheet.create({
     container: {
