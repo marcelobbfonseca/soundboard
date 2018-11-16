@@ -22,6 +22,7 @@ export default class HomeScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
+        <Text> Matheuzinho Soundboard. </Text>
         <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
           {/* <SoundBoard/>*/}
           <ResponsiveBoard/>
