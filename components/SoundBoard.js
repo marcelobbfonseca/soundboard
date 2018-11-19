@@ -61,19 +61,6 @@ export class SoundBoard extends React.Component {
         }
     };
 
-
-    // async playSound(sound, filename='../assets/sounds/PeasantWhat1.wav'){
-    //     try{
-    //         await sound.loadAsync(require(filename)) //.then().catch( error => console.log({error}))
-    //         await sound.playAsync()
-    //     }
-    //     catch(error){
-    //         console.log({error})
-    //         await sound.replayAsync()
-    //     }
-    // };
-
-
     async peasantButton1(){
         try{
             await peasantSound1.loadAsync(require('../assets/sounds/PeasantWhat1.wav')) //.then().catch( error => console.log({error}))

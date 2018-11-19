@@ -1,7 +1,5 @@
 import React from 'react';
 import {
-    Button,
-    Alert,
     StyleSheet,
     View,
     Text,
@@ -22,12 +20,12 @@ const data = [
     { key: 'ta TÃO gotozinho', sound:'matheusSound6' },
     { key: 'ta tão gotozinho de carro', sound:'matheusSound7' },
     { key: 'ai matheuzinho', sound:'matheusSound8' },
-    // { key: 'nossa matheuzinho ta tão fortinho', sound:'matheusSound9' },
-    // { key: 'ta tão durinho', sound:'matheusSound10' },
-    // { key: 'ai matheuzin! ta tão...', sound:'matheusSound11' },
-    // { key: 'Elisinhaa', sound:'matheusSound12' },
-    // { key: 'pira no Matheuzinho', sound:'matheusSound13' },
-    // { key: 'pira no matheuzinho 2', sound:'matheusSound14' },
+    { key: 'nossa matheuzinho ta tão fortinho', sound:'matheusSound9' },
+    { key: 'ta tão durinho', sound:'matheusSound10' },
+    { key: 'ai matheuzin! ta tão...', sound:'matheusSound11' },
+    { key: 'Elisinhaa', sound:'matheusSound12' },
+    { key: 'pira no Matheuzinho', sound:'matheusSound13' },
+    { key: 'pira no matheuzinho 2', sound:'matheusSound14' },
     
   ];
 
@@ -52,7 +50,6 @@ export class ResponsiveBoard extends React.Component {
     vm.play = vm.play.bind(vm)
   }
 
-
   async componentDidMount(){
       await this.loadAssets()
   }
@@ -67,6 +64,13 @@ export class ResponsiveBoard extends React.Component {
       matheusSound6.loadAsync(require('../assets/sounds/PeonWhat2.wav'))
       matheusSound7.loadAsync(require('../assets/sounds/PeonWhat3.wav'))
       matheusSound8.loadAsync(require('../assets/sounds/PeonWhat4.wav'))
+      matheusSound9.loadAsync(require('../assets/sounds/BloodlustTarget.wav'))
+      matheusSound10.loadAsync(require('../assets/sounds/GruntPissed4.wav'))
+      matheusSound11.loadAsync(require('../assets/sounds/PeasantPissed1.wav'))
+      matheusSound12.loadAsync(require('../assets/sounds/PeasantPissed2.wav'))
+      matheusSound13.loadAsync(require('../assets/sounds/PeonPissed1.wav'))
+      matheusSound14.loadAsync(require('../assets/sounds/PeonPissed2.wav'))
+      
     }
     catch(error){
       console.log("Unable to load sound.\n")
@@ -92,6 +96,18 @@ export class ResponsiveBoard extends React.Component {
                             break
       case 'matheusSound8': vm.playSound(matheusSound8)
                             break
+      case 'matheusSound9': vm.playSound(matheusSound9)
+                            break
+      case 'matheuSound10': vm.playSound(matheusSound10)
+                            break
+      case 'matheuSound11': vm.playSound(matheusSound11)
+                            break
+      case 'matheuSound12': vm.playSound(matheusSound12)
+                            break    
+      case 'matheuSound13': vm.playSound(matheusSound13)
+                            break 
+      case 'matheuSound14': vm.playSound(matheusSound14)
+                            break
       default:
         console.log(`sound ${name} not found.`)
     }
@@ -109,7 +125,6 @@ export class ResponsiveBoard extends React.Component {
     }
   }
 
-    
   renderItem = ({ item, index }) => {
       if (item.empty === true) {
         return <View style={[styles.item, styles.itemInvisible]} />;
@@ -147,8 +162,6 @@ export class ResponsiveBoard extends React.Component {
   }
 }
 
-
-
 let matheusSound1 = new Expo.Audio.Sound()
 let matheusSound2 = new Expo.Audio.Sound()
 let matheusSound3 = new Expo.Audio.Sound()
@@ -157,21 +170,12 @@ let matheusSound5 = new Expo.Audio.Sound()
 let matheusSound6 = new Expo.Audio.Sound()
 let matheusSound7 = new Expo.Audio.Sound()
 let matheusSound8 = new Expo.Audio.Sound()
-// let matheusSound9 = new Expo.Audio.Sound()
-// let matheusSound10 = new Expo.Audio.Sound()
-// let matheusSound11 = new Expo.Audio.Sound()
-// let matheusSound12 = new Expo.Audio.Sound()
-// let matheusSound13 = new Expo.Audio.Sound()
-// let matheusSound14 = new Expo.Audio.Sound()
-
-// matheusSound9.loadAsync(require('../assets/sounds/PeasantWhat1.wav'))
-// matheusSound10.loadAsync(require('../assets/sounds/PeasantWhat1.wav'))
-// matheusSound11.loadAsync(require('../assets/sounds/PeasantWhat1.wav'))
-// matheusSound12.loadAsync(require('../assets/sounds/PeasantWhat1.wav'))
-// matheusSound13.loadAsync(require('../assets/sounds/PeasantWhat1.wav'))
-// matheusSound14.loadAsync(require('../assets/sounds/PeasantWhat1.wav'))
-
-
+let matheusSound9 = new Expo.Audio.Sound()
+let matheusSound10 = new Expo.Audio.Sound()
+let matheusSound11 = new Expo.Audio.Sound()
+let matheusSound12 = new Expo.Audio.Sound()
+let matheusSound13 = new Expo.Audio.Sound()
+let matheusSound14 = new Expo.Audio.Sound()
 
 const styles = StyleSheet.create({
     container: {
