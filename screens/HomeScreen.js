@@ -15,7 +15,6 @@ import { WebBrowser } from 'expo';
 import { MonoText } from '../components/StyledText';
 import { SoundBoard } from '../components/SoundBoard';
 import { ResponsiveBoard } from '../components/ResponsiveBoard';
-import { HeaderBar } from '../components/HeaderBar';
 
 
 export default class HomeScreen extends React.Component {

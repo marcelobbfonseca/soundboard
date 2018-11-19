@@ -52,6 +52,7 @@ export class ResponsiveBoard extends React.Component {
 
   async componentDidMount(){
       await this.loadAssets()
+      
   }
 
   loadAssets = async () => {
@@ -78,39 +79,18 @@ export class ResponsiveBoard extends React.Component {
     }
   }
 
+  download = (name) => {
+    console.log(`download sound ${name}.`)
+  }
+
   play = async(name) => {
-    switch(name){
-      case 'matheusSound1': vm.playSound(matheusSound1)
-                            break
-      case 'matheusSound2': vm.playSound(matheusSound2)
-                            break
-      case 'matheusSound3': vm.playSound(matheusSound3)
-                            break
-      case 'matheusSound4': vm.playSound(matheusSound4)
-                            break
-      case 'matheusSound5': vm.playSound(matheusSound5)
-                            break
-      case 'matheusSound6': vm.playSound(matheusSound6)
-                            break
-      case 'matheusSound7': vm.playSound(matheusSound7)
-                            break
-      case 'matheusSound8': vm.playSound(matheusSound8)
-                            break
-      case 'matheusSound9': vm.playSound(matheusSound9)
-                            break
-      case 'matheuSound10': vm.playSound(matheusSound10)
-                            break
-      case 'matheuSound11': vm.playSound(matheusSound11)
-                            break
-      case 'matheuSound12': vm.playSound(matheusSound12)
-                            break    
-      case 'matheuSound13': vm.playSound(matheusSound13)
-                            break 
-      case 'matheuSound14': vm.playSound(matheusSound14)
-                            break
-      default:
-        console.log(`sound ${name} not found.`)
-    }
+
+    if(boardSounds[name] == undefined){
+      console.log(`sound '${name}' not found.`)
+      
+    }else
+      vm.playSound(boardSounds[name])
+
   }
 
   async playSound(sound){
@@ -132,16 +112,20 @@ export class ResponsiveBoard extends React.Component {
       if(index %2==0){
         return (
           <TouchableHighlight style={styles.item} 
-          onPress={ () => { this.play(item.sound) }} 
-          accessibilityLabel={item.key}>
+            onPress={ () => { this.play(item.sound) }} 
+            accessibilityLabel={item.key}
+            onLongPress={this.download(item.sound)}
+          >
             <Text style={styles.itemText}>{item.key}</Text>
           </TouchableHighlight>
         )
       } else {
         return (
-          <TouchableHighlight style={styles.item2} 
-          onPress={ () => { this.play(item.sound) }} 
-          accessibilityLabel={item.key}>
+          <TouchableHighlight style={styles.item2}
+            onPress={ () => { this.play(item.sound) }} 
+            accessibilityLabel={item.key}
+            onLongPress={this.download(item.sound)}
+          >
             <Text style={styles.itemText}>{item.key}</Text>
           </TouchableHighlight>
         )
@@ -176,6 +160,29 @@ let matheusSound11 = new Expo.Audio.Sound()
 let matheusSound12 = new Expo.Audio.Sound()
 let matheusSound13 = new Expo.Audio.Sound()
 let matheusSound14 = new Expo.Audio.Sound()
+
+const boardSounds = {
+  'matheusSound1': matheusSound1,
+  'matheusSound2': matheusSound2,
+  'matheusSound3': matheusSound3,
+  'matheusSound4': matheusSound4,
+  'matheusSound5': matheusSound5,
+  'matheusSound6': matheusSound6,
+  'matheusSound7': matheusSound7,
+  'matheusSound8': matheusSound8,
+  'matheusSound9': matheusSound9,
+  'matheusSound10': matheusSound10,
+  'matheusSound11': matheusSound11,
+  'matheusSound12': matheusSound12,
+  'matheusSound13': matheusSound13,
+  'matheusSound14': matheusSound14,
+} 
+
+const testArray = {
+  'oi': 'aaaa',
+  'ai': matheusSound1,
+  'ui': 42,
+}
 
 const styles = StyleSheet.create({
     container: {
