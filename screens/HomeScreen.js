@@ -10,11 +10,12 @@ import {
 } from 'react-native';
 import { Header, icon } from 'react-native-elements'
 
-import { WebBrowser } from 'expo';
-
-import { MonoText } from '../components/StyledText';
 import { SoundBoard } from '../components/SoundBoard';
 import { ResponsiveBoard } from '../components/ResponsiveBoard';
+import { AdMobBanner,
+  AdMobInterstitial,
+  PublisherBanner,
+  AdMobRewarded } from 'expo'
 
 
 export default class HomeScreen extends React.Component {
@@ -31,81 +32,29 @@ export default class HomeScreen extends React.Component {
           rightComponent={{ icon: 'share', color: '#000' }}
           backgroundColor='#dfdfde'
         />
-
-        <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
-          {/* <SoundBoard/>*/}
+        <ScrollView  >
           <ResponsiveBoard/>
-        </ScrollView>
 
+        </ScrollView>
+        <AdMobBanner
+                
+                bannerSize="Banner"
+                adUnitID= "ca-app-pub-3940256099942544/6300978111"  // test key
+                testDeviceID="EMULATOR"
+                onDidFailToReceiveAdWithError={this.bannerError} 
+          />
       </View>
     );
   }
 
   
-  _handleLearnMorePress = () => {
-    WebBrowser.openBrowserAsync('https://docs.expo.io/versions/latest/guides/development-mode');
-  };
-
-  _handleHelpPress = () => {
-    WebBrowser.openBrowserAsync(
-      'https://docs.expo.io/versions/latest/guides/up-and-running.html#can-t-see-your-changes'
-    );
-  };
 }
 
 const styles = StyleSheet.create({
 
-  headerStyle:{
-    backgroundColor: '#dfdfde',
-    color: '#dfdfde'
-  },
-
   container: {
     flex: 1,
     backgroundColor: '#fff',
-  },
-  developmentModeText: {
-    marginBottom: 20,
-    color: 'rgba(0,0,0,0.4)',
-    fontSize: 14,
-    lineHeight: 19,
-    textAlign: 'center',
-  },
-  contentContainer: {
-    paddingTop: 30,
-  },
-  welcomeContainer: {
-    alignItems: 'center',
-    marginTop: 10,
-    marginBottom: 20,
-  },
-  welcomeImage: {
-    width: 100,
-    height: 80,
-    resizeMode: 'contain',
-    marginTop: 3,
-    marginLeft: -10,
-  },
-  getStartedContainer: {
-    alignItems: 'center',
-    marginHorizontal: 50,
-  },
-  homeScreenFilename: {
-    marginVertical: 7,
-  },
-  codeHighlightText: {
-    color: 'rgba(96,100,109, 0.8)',
-  },
-  codeHighlightContainer: {
-    backgroundColor: 'rgba(0,0,0,0.05)',
-    borderRadius: 3,
-    paddingHorizontal: 4,
-  },
-  getStartedText: {
-    fontSize: 17,
-    color: 'rgba(96,100,109, 1)',
-    lineHeight: 24,
-    textAlign: 'center',
   },
   tabBarInfoContainer: {
     position: 'absolute',
@@ -145,5 +94,9 @@ const styles = StyleSheet.create({
   helpLinkText: {
     fontSize: 14,
     color: '#2e78b7',
+  },
+  bottomBanner:{
+    position: 'absolute',
+    bottom: 0,
   },
 });

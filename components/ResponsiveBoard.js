@@ -8,6 +8,8 @@ import {
     Dimensions,
 } from 'react-native';
 
+import { AdMobBanner } from 'expo'
+
 const numColumns = 3;
 
 const data = [
@@ -80,17 +82,17 @@ export class ResponsiveBoard extends React.Component {
   }
 
   download = (name) => {
-    console.log(`download sound ${name}.`)
+    if(boardSounds[name] == undefined)
+      console.log(`download sound ${name}.`)
+    else
+      vm.playSound(boardSounds[name])
   }
 
   play = async(name) => {
-
-    if(boardSounds[name] == undefined){
+    if(boardSounds[name] == undefined)
       console.log(`sound '${name}' not found.`)
-      
-    }else
+    else
       vm.playSound(boardSounds[name])
-
   }
 
   async playSound(sound){
@@ -114,7 +116,6 @@ export class ResponsiveBoard extends React.Component {
           <TouchableHighlight style={styles.item} 
             onPress={ () => { this.play(item.sound) }} 
             accessibilityLabel={item.key}
-            onLongPress={this.download(item.sound)}
           >
             <Text style={styles.itemText}>{item.key}</Text>
           </TouchableHighlight>
@@ -124,7 +125,6 @@ export class ResponsiveBoard extends React.Component {
           <TouchableHighlight style={styles.item2}
             onPress={ () => { this.play(item.sound) }} 
             accessibilityLabel={item.key}
-            onLongPress={this.download(item.sound)}
           >
             <Text style={styles.itemText}>{item.key}</Text>
           </TouchableHighlight>
@@ -178,16 +178,11 @@ const boardSounds = {
   'matheusSound14': matheusSound14,
 } 
 
-const testArray = {
-  'oi': 'aaaa',
-  'ai': matheusSound1,
-  'ui': 42,
-}
 
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      marginVertical: 20,
+      marginVertical: 5,
     },
     item: {
       backgroundColor: '#4D243D',
