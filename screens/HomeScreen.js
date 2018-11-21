@@ -5,17 +5,12 @@ import {
   ScrollView,
   StyleSheet,
   Text,
-  TouchableOpacity,
   View,
 } from 'react-native';
 import { Header, icon } from 'react-native-elements'
 
-import { SoundBoard } from '../components/SoundBoard';
 import { ResponsiveBoard } from '../components/ResponsiveBoard';
-import { AdMobBanner,
-  AdMobInterstitial,
-  PublisherBanner,
-  AdMobRewarded } from 'expo'
+import { AdMobBanner } from 'expo'
 
 
 export default class HomeScreen extends React.Component {
@@ -37,11 +32,10 @@ export default class HomeScreen extends React.Component {
 
         </ScrollView>
         <AdMobBanner
-                
-                bannerSize="Banner"
-                adUnitID= "ca-app-pub-3940256099942544/6300978111"  // test key
-                testDeviceID="EMULATOR"
-                onDidFailToReceiveAdWithError={this.bannerError} 
+          bannerSize="smartBannerPortrait"
+          adUnitID= "ca-app-pub-3940256099942544/6300978111"  // test key
+          testDeviceID="EMULATOR"
+          onDidFailToReceiveAdWithError={this.bannerError} 
           />
       </View>
     );

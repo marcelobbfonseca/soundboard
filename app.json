@@ -1,16 +1,16 @@
 {
   "expo": {
-    "name": "soundboard",
-    "description": "A very interesting project.",
+    "name": "Matheuzinho soundboard",
+    "description": "They just can't handle Matheuzinho.",
     "slug": "soundboard",
     "privacy": "public",
     "sdkVersion": "31.0.0",
     "platforms": ["ios", "android"],
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "./assets/images/derpina_me_gusta.png",
     "splash": {
-      "image": "./assets/images/splash.png",
+      "image": "./assets/images/derpina_giggle.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
